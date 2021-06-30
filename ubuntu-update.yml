@@ -1,5 +1,5 @@
 ---
-# Ansible playbook to run Update Update and restart, if required
+# Ansible playbook to run Linux Ubuntu/Debian Update and restart, if required
 #
 
 - hosts: all
