@@ -1,5 +1,5 @@
 ---
-# Ansible playbook to run Linux Centos Update and restart, if required
+# Ansible playbook to run Linux Centos/RHEL Update and restart, if required
 #
 
 - hosts: all
