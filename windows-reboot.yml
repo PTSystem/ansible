@@ -1,7 +1,10 @@
 ---
 # Ansible playbook to run Windows reboot
 #
-
+- name:  Windows Reboot
+  hosts: all
+  gather_facts: false
+  tasks:
 # Reboot a slow machine that might have lots of updates to apply
 - win_reboot:
     reboot_timeout: 3600
