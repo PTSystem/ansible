@@ -14,7 +14,8 @@
     shell: "sleep 5 && reboot"
     async: 1
     poll: 0
-    when: task_result is changed
+    become: true
+    ignore_errors: true
 
   - name: wait for 10 seconds
     pause:
