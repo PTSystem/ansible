@@ -2,7 +2,7 @@
 # Ansible playbook to run Linux Centos/RHEL Update and restart, if required
 #
 
-- hosts: servers
+- hosts: all
   become: true
   tasks:
   - name: Upgrade all installed packages for RedHat
