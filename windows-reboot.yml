@@ -6,6 +6,6 @@
   gather_facts: false
   tasks:
 # Reboot a slow machine that might have lots of updates to apply
-- win_reboot:
-    reboot_timeout: 3600
+  - win_reboot:
+      reboot_timeout: 3600
     
