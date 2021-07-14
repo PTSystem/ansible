@@ -9,6 +9,10 @@
     yum:
       name: '*'
       state: latest
+      
+  - name: Check if a reboot is needed on all servers
+    register: reboot_required_file
+      stat: path=/var/run/reboot-required get_md5=no
 
   - name: Reboot when there is a change
     shell: "sleep 5 && reboot"
@@ -16,6 +20,7 @@
     poll: 0
     become: true
     ignore_errors: true
+    when: reboot_required_file.stat.exists
 
   - name: wait for 10 seconds
     pause:
@@ -27,3 +32,4 @@
       sleep: 5
       delay: 5
       timeout: 60
+      
