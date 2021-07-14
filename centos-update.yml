@@ -5,22 +5,24 @@
 - hosts: all
   become: true
   tasks:
-  - name: Upgrade all installed packages for RedHat
-    yum:
-      name: '*'
-      state: latest
-    when: ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'RedHat'
-    register: task_result
-
   - name: Upgrade all installed packages for CentOS
     yum:
       name: '*'
       state: latest
-    when: ansible_distribution == 'CentOS'
-    register: task_result
 
   - name: Reboot when there is a change
     shell: "sleep 5 && reboot"
     async: 1
     poll: 0
     when: task_result is changed
+
+  - name: wait for 10 seconds
+    pause:
+      seconds: 10
+
+  - name: wait for the system to reboot
+    wait_for_connection:
+      connect_timeout: 20
+      sleep: 5
+      delay: 5
+      timeout: 60
