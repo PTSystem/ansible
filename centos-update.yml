@@ -24,5 +24,3 @@
     async: 1
     poll: 0
     when: task_result is changed
-
-...
